@@ -17,6 +17,8 @@ public class RunEventHandlers {
 
         var manager = EventsUtils.createEventsManager();
         var linkHandler = new LinkEventHandler();
+        var simpleHandler = new SimpleEventHandler();
+        manager.addHandler(simpleHandler);
         manager.addHandler(linkHandler);
 
         EventsUtils.readEvents(manager, eventsFile);

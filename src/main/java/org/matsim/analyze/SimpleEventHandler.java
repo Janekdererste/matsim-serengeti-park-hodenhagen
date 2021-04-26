@@ -16,15 +16,18 @@ public class SimpleEventHandler implements PersonDepartureEventHandler, PersonAr
 
     @Override
     public void handleEvent(PersonArrivalEvent event) {
-        System.out.println("AgentDepartureEvent -- time: " + event.getTime() + " -- linkId: " + event.getLinkId() + " -- personId: " + event.getPersonId());
-        departureTimeByPerson.put(event.getPersonId(), event.getTime());
-    }
-
-    @Override
-    public void handleEvent(PersonDepartureEvent event) {
         System.out.println("PersonArrivalEvent -- time: " + event.getTime() + " -- linkId: " + event.getLinkId() + " -- personId: " + event.getPersonId());
         double departureTime = departureTimeByPerson.get(event.getPersonId());
         double travelTime = event.getTime() - departureTime;
         System.out.println("Travel time of person " + event.getPersonId() + " is " + travelTime + " s.");
+    }
+
+    @Override
+    public void handleEvent(PersonDepartureEvent event) {
+
+        System.out.println("AgentDepartureEvent -- time: " + event.getTime() + " -- linkId: " + event.getLinkId() + " -- personId: " + event.getPersonId());
+        departureTimeByPerson.put(event.getPersonId(), event.getTime());
+
+
     }
 }
